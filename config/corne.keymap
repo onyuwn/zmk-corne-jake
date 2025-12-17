@@ -18,6 +18,59 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        escape_combo {
+            bindings = <&kp ESCAPE>;
+            key-positions = <0 1>;
+        };
+    };
+
+    macros {
+        highlightleft: highlightleft {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT &kp LEFT>;
+            label = "HIGHLIGHTLEFT";
+        };
+
+        highlightright: highlightright {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT &kp RIGHT>;
+            label = "HIGHLIGHTRIGHT";
+        };
+
+        highlightwordright: highlightwordleft {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT &kp RIGHT &kp LCTRL>;
+            label = "HIGHLIGHTWORDLEFT";
+        };
+
+        highlightwordleft: highlightwordleft {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT &kp LEFT &kp LCTRL>;
+            label = "HIGHLIGHTWORDLEFT";
+        };
+
+        highlightdown: highlightdown {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT &kp DOWN &kp LCTRL>;
+            label = "HIGHLIGHTDOWN";
+        };
+
+        highlightup: highlightup {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT &kp UP &kp LCTRL>;
+            label = "HIGHLIGHTUP";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -31,10 +84,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB    &kp Q    &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U  &kp I     &kp O      &kp P     &kp BSPC
-&kp LSHFT  &kp A    &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K     &kp L      &kp SEMI  &kp SQT
-&kp LCTRL  &kp ESC  &kp Z  &kp X     &kp C  &kp V        &kp B    &kp N  &kp M     &kp COMMA  &kp DOT   &kp FSLH
-                           &kp LGUI  &mo 1  &kp SPACE    &kp RET  &mo 2  &kp RALT
+&kp TAB    &kp Q  &kp W  &kp E         &kp R  &kp T        &kp Y    &kp U  &kp I      &kp O       &kp P      &kp BSPC
+&kp LSHFT  &kp A  &kp S  &kp D         &kp F  &kp G        &kp H    &kp J  &kp K      &kp L       &kp SEMI   &kp SQT
+&kp LCTRL  &kp Z  &kp X  &kp C         &kp V  &kp B        &kp N    &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &kp RCTRL
+                         &kp LEFT_ALT  &mo 1  &kp SPACE    &kp RET  &mo 2  &kp RALT
             >;
         };
 
@@ -48,10 +101,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp F1        &kp F2        &kp F3        &kp N4        &kp F11         &kp HOME      &kp END         &kp N7        &kp N8  &kp N9        &kp BSPC
-&kp LSHFT  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp INSERT    &kp PSCRN       &kp N4        &kp N5  &kp NUMBER_6  &trans
-&kp LCTRL  &trans        &trans        &trans        &kp LEFT      &kp RIGHT       &kp UP_ARROW  &kp DOWN_ARROW  &kp NUMBER_1  &kp N2  &kp N3        &kp N0
-                                       &kp LGUI      &trans        &kp SPACE       &kp RET       &trans          &kp RALT
+&kp TAB    &kp F1        &kp F2        &kp F3              &kp F4    &kp F11                &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp INSERT       &kp HOME    &kp BSPC
+&kp LSHFT  &bt BT_SEL 0  &bt BT_SEL 1  &highlightwordleft  &kp UP    &highlightwordright    &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PRINTSCREEN  &kp END     &kp PLUS
+&kp LCTRL  &trans        &trans        &kp LEFT            &kp DOWN  &kp RIGHT              &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp N0           &kp PERIOD  &kp MINUS
+                                       &kp LGUI            &trans    &kp SPACE              &kp RET       &trans        &kp RALT
             >;
         };
 
@@ -65,10 +118,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp ESCAPE  &kp EXCL    &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS          &kp ASTRK          &kp LPAR   &kp RPAR  &kp DELETE
-&kp LSHFT   &tap_dance  &trans  &trans    &trans    &trans       &kp MINUS  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp EQUAL  &kp BSLH  &kp GRAVE
-&kp LCTRL   &trans      &trans  &trans    &trans    &trans       &kp END    &kp LESS_THAN     &kp GREATER_THAN   &kp HOME   &kp PIPE  &kp TILDE
-                                &kp LGUI  &trans    &kp SPACE    &kp RET    &trans            &kp RALT
+&kp ESCAPE  &kp EXCL    &kp AT  &kp HASH        &kp DLLR        &kp PRCNT          &kp CARET  &kp AMPS          &kp ASTRK          &kp LPAR   &kp RPAR  &kp DELETE
+&kp LSHFT   &tap_dance  &trans  &trans          &highlightup    &trans             &kp MINUS  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp EQUAL  &kp BSLH  &kp HOME
+&kp LCTRL   &trans      &trans  &highlightleft  &highlightdown  &highlightright    &kp GRAVE  &kp LESS_THAN     &kp GREATER_THAN   &kp TILDE  &kp PIPE  &kp END
+                                &kp LGUI        &trans          &kp SPACE          &kp RET    &trans            &kp RALT
             >;
         };
     };
