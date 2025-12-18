@@ -42,11 +42,11 @@
             label = "HIGHLIGHTRIGHT";
         };
 
-        highlightwordright: highlightwordleft {
+        highlightwordright: highlightwordright {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT &kp RIGHT &kp LCTRL>;
-            label = "HIGHLIGHTWORDLEFT";
+            label = "HIGHLIGHTWORDRIGHT";
         };
 
         highlightwordleft: highlightwordleft {
